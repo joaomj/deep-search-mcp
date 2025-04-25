@@ -1,0 +1,74 @@
+# Node/JavaScript/TypeScript
+node_modules/
+dist/
+build/
+.out/
+.next/
+.nuxt/
+.cache/
+.turbo/
+*.tsbuildinfo
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Editor
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+coverage/
+.nyc_output/
+jest.config.js
+.vitest/
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# TypeScript
+*.js.map
+*.d.ts
+*.d.ts.map
+
+# Build tools
+.eslintcache
+*.min.js
+*.min.css
+
+# Cline
+.clinerules
+memory-bank/
+
+# Misc
+*.bak
+*.tmp
+*.patch
