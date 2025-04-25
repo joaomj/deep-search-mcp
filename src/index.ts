@@ -3,11 +3,6 @@ import 'dotenv/config';
 
 /**
  * This is a deep search MCP server using LinkUp API.
- * It demonstrates core MCP concepts like resources and tools by allowing:
- * - Listing notes as resources
- * - Reading individual notes
- * - Creating new notes via a tool
- * - Summarizing all notes via a prompt
  */
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
