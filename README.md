@@ -1,70 +1,103 @@
 # deep-search-mcp MCP Server
 
-A deep web search MCP using LinkUp API.
+A deep web search MCP server using LinkUp API.
 
-This is a TypeScript-based MCP server that implements a simple notes system. It demonstrates core MCP concepts by providing:
+This is a TypeScript-based MCP server that implements deep web search capabilities. It demonstrates core MCP concepts by providing:
 
-- Resources representing text notes with URIs and metadata
-- Tools for creating new notes
-- Prompts for generating summaries of notes
+- Tools for performing deep web searches
+- Structured results from LinkUp API
 
 ## Features
 
-### Resources
-- List and access notes via `note://` URIs
-- Each note has a title, content and metadata
-- Plain text mime type for simple content access
-
 ### Tools
-- `create_note` - Create new text notes
-  - Takes title and content as required parameters
-  - Stores note in server state
+- `deep_search` - Perform deep web searches
+  - Takes query string as required parameter
+  - Optional max_results parameter (default: 5)
+  - Returns structured search results
 
-### Prompts
-- `summarize_notes` - Generate a summary of all stored notes
-  - Includes all note contents as embedded resources
-  - Returns structured prompt for LLM summarization
+## Setup
 
-## Development
-
-Install dependencies:
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-Build the server:
+2. Build the server:
 ```bash
 npm run build
 ```
+
+3. Configure the MCP server in your settings:
+```json
+{
+  "mcpServers": {
+    "deep-search-mcp": {
+      "command": "node",
+      "args": ["/home/joao/Cline/MCP/linkup-mcp-server/build/index.js"],
+      "env": {
+        "LINKUP_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+The API key can be obtained from LinkUp API service.
+
+## Running
 
 For development with auto-rebuild:
 ```bash
 npm run watch
 ```
 
-## Installation
-
-To use with Claude Desktop, add the server config:
-
-On MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
-
-```json
-{
-  "mcpServers": {
-    "deep-search-mcp": {
-      "command": "/path/to/deep-search-mcp/build/index.js"
-    }
-  }
-}
+For production:
+```bash
+npm start
 ```
 
-### Debugging
+## Debugging
 
-Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:
+Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector):
 
 ```bash
 npm run inspector
 ```
 
-The Inspector will provide a URL to access debugging tools in your browser.
+## MEMORY BANK SUMMARY
+
+Key technical information from the project's memory bank:
+
+### Configuration
+- API keys are managed through MCP server settings
+- Environment-specific configurations are externalized
+- Follows secure configuration patterns
+
+### Known Issues
+- "SearchDepth is not defined" error during testing
+- Currently investigating root cause
+
+### Technical Decisions
+- Removed .env file in favor of centralized MCP configuration
+- Standardized on TypeScript for type safety
+- Using MCP SDK for protocol implementation
+
+### Architecture Patterns
+- Adapter pattern for LinkUp API integration
+- Facade pattern for simplified search interface
+- Strategy pattern for different search types
+
+## NEXT STEPS
+
+Future improvements to consider:
+
+1. Add caching for search results to improve performance
+2. Implement pagination for large result sets
+3. Add filtering options for search results
+4. Support different output formats (markdown, HTML)
+5. Add rate limiting and request throttling
+6. Implement authentication for API access
+7. Add more search parameters (date ranges, domains, etc.)
+8. Improve error handling and user feedback
+9. Add logging for debugging and monitoring
+10. Implement health check endpoints
