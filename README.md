@@ -64,29 +64,6 @@ Since MCP servers communicate over stdio, debugging can be challenging. We recom
 npm run inspector
 ```
 
-## MEMORY BANK SUMMARY
-
-Key technical information from the project's memory bank:
-
-### Configuration
-- API keys are managed through MCP server settings
-- Environment-specific configurations are externalized
-- Follows secure configuration patterns
-
-### Known Issues
-- "SearchDepth is not defined" error during testing
-- Currently investigating root cause
-
-### Technical Decisions
-- Removed .env file in favor of centralized MCP configuration
-- Standardized on TypeScript for type safety
-- Using MCP SDK for protocol implementation
-
-### Architecture Patterns
-- Adapter pattern for LinkUp API integration
-- Facade pattern for simplified search interface
-- Strategy pattern for different search types
-
 ## NEXT STEPS
 
 Future improvements to consider:
