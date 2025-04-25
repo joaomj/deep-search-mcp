@@ -1,4 +1,4 @@
-# deep-search-mcp MCP Server
+# Deep Search MCP Server
 
 A deep web search MCP server using LinkUp API.
 
